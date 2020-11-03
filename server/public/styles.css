@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+header{
+  margin: 0px;
+}
+
+.header-h1 {
+  font-size: 1.5rem;
+}
+
+.header-contents  {
+  height: 3rem;
+}
+
+.img-fit {
+  object-fit: contain;
+}
+
+.product-item {
+  border: 1px solid lightgray;
+  min-width: 28%;
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
+}
+
+.product-price, .product-desc {
+  font-size: .8rem;
+}
+
+.card-img-top {
+  height: 100%;
+  max-height: 10rem;
+  align-self: center;
+}
