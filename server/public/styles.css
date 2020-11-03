@@ -4,13 +4,6 @@
   font-family: Arial, Helvetica, sans-serif
 }
 
-/* .header-icon  {
-  font-size: 1rem;
-} */
-body  {
-  /* width: 1250px; */
-  border: 2px red solid;
-}
 header{
   margin: 0px;
 }
@@ -42,11 +35,3 @@ header{
   max-height: 10rem;
   align-self: center;
 }
-
-/* .container  {
-  margin-left: 5%;
-} */
-/* .header-banner  {
-  background-color: black;
-  color: white;
-} */
