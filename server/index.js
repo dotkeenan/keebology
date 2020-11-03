@@ -34,6 +34,30 @@ app.get('/api/products', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/products/:productId', (req, res, next) => {
+  const sql = `
+    select *
+    from "products"
+    where "productId" = $1
+  `;
+  const params = [req.params.productId];
+  db.query(sql, params)
+    .then(result => {
+      const productQuery = result.rows[0];
+      if (!productQuery) {
+        return res.status(404).json({
+          error: 'That productId does not exist'
+        });
+      }
+      res.status(200).json(productQuery);
+    })
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
