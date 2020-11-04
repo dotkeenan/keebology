@@ -1,13 +1,19 @@
 import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
+import ProductDetails from './product-details';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      view: {
+        name: 'catalog',
+        params: {}
+      }
     };
+    // is this necessary?
+    this.setView = this.setView.bind(this);
   }
 
   componentDidMount() {
@@ -18,16 +24,29 @@ export default class App extends React.Component {
       .finally(() => this.setState({ isLoading: false }));
   }
 
+  setView(name, params) {
+    this.setState({
+      view: { name: name, params: params }
+    });
+  }
+
   render() {
+    let view = null;
+    if (this.state.view.name === 'catalog') {
+      view = (<div className="container">
+        <div className="row">
+          <ProductList setView={this.setView} />
+        </div>
+      </div>);
+    } else if (this.state.view.name === 'details') {
+      view = (<div className="row justify-content-center">
+        <ProductDetails params={this.state.view.params} setView={this.setView}/>
+      </div>);
+    }
     return (
       <>
         <Header />
-
-        <div className="container">
-          <div className="row">
-            <ProductList />
-          </div>
-        </div>
+        {view}
       < />
     );
   }

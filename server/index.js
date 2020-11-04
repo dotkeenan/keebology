@@ -35,6 +35,13 @@ app.get('/api/products', (req, res, next) => {
 });
 
 app.get('/api/products/:productId', (req, res, next) => {
+  const productIdInput = parseInt(req.params.productId, 10);
+  if (productIdInput <= 0 || !Number.isInteger(productIdInput)) {
+    return res.status(400).json({
+      error: '"productId" must be a positive integer'
+    });
+  }
+
   const sql = `
     select *
     from "products"
@@ -46,7 +53,7 @@ app.get('/api/products/:productId', (req, res, next) => {
       const productQuery = result.rows[0];
       if (!productQuery) {
         return res.status(404).json({
-          error: 'That productId does not exist'
+          error: 'That "productId" does not exist'
         });
       }
       res.status(200).json(productQuery);

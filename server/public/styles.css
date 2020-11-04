@@ -35,3 +35,12 @@ header{
   max-height: 10rem;
   align-self: center;
 }
+
+.back-button  {
+  width: 135px;
+  padding: 0;
+  border-radius: 50px;
+  text-decoration: none;
+  border: none;
+  background-color: none;
+}

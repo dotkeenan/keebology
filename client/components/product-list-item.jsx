@@ -2,11 +2,15 @@ import React from 'react';
 import PriceFormatter from './price-formatter';
 
 function ProductListItem(props) {
+  function handleClick() {
+    props.setView('details', { productId: props.productId });
+  }
   return (
     <div className="card product-item mb-4">
       <img
         src={props.product.image}
         alt={props.product.name}
+        onClick={handleClick}
         className="card-img-top img-fit"/>
       <div className="card-body">
         <h5 className="card-title mb-3">{props.product.name}</h5>
