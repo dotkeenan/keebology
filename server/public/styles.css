@@ -35,3 +35,34 @@ header{
   max-height: 10rem;
   align-self: center;
 }
+
+.back-button  {
+  width: 135px;
+  padding: 0;
+  border-radius: 50px;
+  text-decoration: none;
+  border: none;
+  background-color: none;
+}
+
+.hover:hover  {
+  cursor:pointer;
+}
+
+.title {
+  color: black;
+  transition: color 0.1s linear;
+}
+
+.title:hover  {
+  color: rgb(170, 170, 170);
+}
+
+.img-hover  {
+  transform: scale(1);
+  transition: transform .2s ease;
+}
+
+.img-hover:hover  {
+  transform: scale(0.9)
+}
