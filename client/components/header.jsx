@@ -1,6 +1,9 @@
 import React from 'react';
 
 function Header(props) {
+  function handleClick() {
+    props.setView('cart', {});
+  }
   return (
     <header className="row text-light bg-dark justify-content-center mb-4">
       <div className="row header-contents align-items-center justify-content-between">
@@ -9,8 +12,8 @@ function Header(props) {
           Wicked Sales
         </h1>
         <div className="row align-items-center justify-content-end col-6">
-          <p className="mb-0">{props.cartItemCount} Items</p>
-          <i className="fas fa-shopping-cart"></i>
+          <p className="mb-0 hover" onClick={handleClick}>{props.cartItemCount} Items</p>
+          <i className="fas fa-shopping-cart hover" onClick={handleClick}></i>
         </div>
       </div>
     </header>

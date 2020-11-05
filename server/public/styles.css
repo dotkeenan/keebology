@@ -76,3 +76,17 @@ header{
 .fa-shopping-cart {
   font-size: 1.5rem;
 }
+
+.cart-total {
+  width: 100%;
+  transform: translatex(-17px)
+}
+
+.cart-summary-container {
+  width: 50%;
+  padding: 0px;
+}
+
+.cart-h2 {
+  padding: 0px;
+}
