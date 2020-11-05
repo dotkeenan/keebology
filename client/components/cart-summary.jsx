@@ -1,5 +1,6 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
+import CalculateTotal from './calculate-total';
 
 function CartSummary(props) {
   function handleClick() {
@@ -25,7 +26,7 @@ function CartSummary(props) {
           }
         </div>
         <div className="cart-total">
-          <h3 className="">Item Total {}</h3>
+          <h3>Item Total {CalculateTotal(props.cart)}</h3>
         </div>
       </div>
     </>
