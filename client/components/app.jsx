@@ -10,9 +10,9 @@ export default class App extends React.Component {
       view: {
         name: 'catalog',
         params: {}
-      }
+      },
+      cart: []
     };
-    // is this necessary?
     this.setView = this.setView.bind(this);
   }
 
