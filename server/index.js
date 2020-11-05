@@ -111,23 +111,7 @@ app.post('/api/cart', (req, res, next) => {
       const price = result.rows[0].price;
 
       if (req.session.cartId) {
-        const sessCartId = `
-          select "cartId"
-            from "carts"
-           where "cartId" = $1
-        `;
-
-        return (
-          db.query(sessCartId, [req.session.cartId])
-            .then(result => {
-              const existingCartId = result.rows[0].cartId;
-              const object = {
-                cartId: existingCartId,
-                price: price
-              };
-              return object;
-            })
-        );
+        return { cartId: req.session.cartId, price: price };
       } else {
         return (
           db.query(insert)
