@@ -14,10 +14,16 @@ header{
 
 .header-contents  {
   height: 3rem;
+  width: 48%;
 }
 
 .img-fit {
   object-fit: contain;
+}
+
+.product-list-container {
+  width: 50%;
+  margin-left: auto;
 }
 
 .product-item {
@@ -65,4 +71,8 @@ header{
 
 .img-hover:hover  {
   transform: scale(0.9)
+}
+
+.fa-shopping-cart {
+  font-size: 1.5rem;
 }

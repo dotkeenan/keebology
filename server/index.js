@@ -36,25 +36,23 @@ app.get('/api/products', (req, res, next) => {
 
 app.get('/api/products/:productId', (req, res, next) => {
   const productIdInput = parseInt(req.params.productId, 10);
+
   if (productIdInput <= 0 || !Number.isInteger(productIdInput)) {
-    return res.status(400).json({
-      error: '"productId" must be a positive integer'
-    });
+    return next(new ClientError('"productId" must be a positive integer', 400));
   }
 
+  const params = [req.params.productId];
   const sql = `
     select *
     from "products"
     where "productId" = $1
   `;
-  const params = [req.params.productId];
+
   db.query(sql, params)
     .then(result => {
       const productQuery = result.rows[0];
       if (!productQuery) {
-        return res.status(404).json({
-          error: 'That "productId" does not exist'
-        });
+        return next(new ClientError('That "productId" does not exist'));
       }
       res.status(200).json(productQuery);
     })
@@ -86,9 +84,7 @@ app.get('/api/cart', (req, res, next) => {
 app.post('/api/cart', (req, res, next) => {
   const productId = parseInt(req.body.productId, 10);
   if (!req.body.productId || !Number.isInteger(productId)) {
-    return res.status(400).json({
-      error: '"productId" must be a positive integer'
-    });
+    return next(new ClientError('"productId" must be a positive integer', 400));
   }
 
   const sql = `
@@ -96,19 +92,18 @@ app.post('/api/cart', (req, res, next) => {
       from "products"
      where "productId" = $1
   `;
-  const params = [productId];
 
-  db.query(sql, params)
+  db.query(sql, [productId])
     .then(result => {
       if (!result.rows[0]) {
         throw new ClientError('product with that productId does not exist', 404);
       }
+      const price = result.rows[0].price;
       const insert = `
         insert into "carts" ("cartId", "createdAt")
              values (default, default)
           returning "cartId"
       `;
-      const price = result.rows[0].price;
 
       if (req.session.cartId) {
         return { cartId: req.session.cartId, price: price };
@@ -160,10 +155,7 @@ app.post('/api/cart', (req, res, next) => {
     }
 
     )
-    .catch(err => {
-      console.error(err);
-      next(err);
-    });
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
