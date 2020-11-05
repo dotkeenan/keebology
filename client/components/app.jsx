@@ -14,14 +14,35 @@ export default class App extends React.Component {
       cart: []
     };
     this.setView = this.setView.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
-    fetch('/api/health-check')
-      .then(res => res.json())
-      .then(data => this.setState({ message: data.message || data.error }))
-      .catch(err => this.setState({ message: err.message }))
-      .finally(() => this.setState({ isLoading: false }));
+    this.getCartItems();
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(result => result.json())
+      .then(cartItems => this.setstate({ cart: cartItems }))
+      .catch(err => console.error(err));
+  }
+
+  addToCart(product) {
+    const reqOptions = {
+      method: 'POST',
+      body: JSON.stringify(product),
+      headers: { 'Content-Type': 'application/json' }
+    };
+    fetch('/api/cart', reqOptions)
+      .then(result => result.json())
+      .then(product => {
+        const updatedCart = this.state.cart.slice();
+        updatedCart.push(product);
+        this.setState({ cart: updatedCart });
+      })
+      .catch(err => console.error(err));
   }
 
   setView(name, params) {
@@ -33,19 +54,13 @@ export default class App extends React.Component {
   render() {
     let view = null;
     if (this.state.view.name === 'catalog') {
-      view = (<div className="container">
-        <div className="row">
-          <ProductList setView={this.setView} />
-        </div>
-      </div>);
+      view = <ProductList setView={this.setView} />;
     } else if (this.state.view.name === 'details') {
-      view = (<div className="row justify-content-center">
-        <ProductDetails params={this.state.view.params} setView={this.setView}/>
-      </div>);
+      view = <ProductDetails params={this.state.view.params} addToCart={this.addToCart} setView={this.setView}/>;
     }
     return (
       <>
-        <Header />
+        <Header cartItemCount={this.state.cart.length}/>
         {view}
       < />
     );

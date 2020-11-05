@@ -38,16 +38,18 @@ class ProductList extends React.Component {
       );
     });
     return (
-      <>
-        {productList}
-      </>
+      <div className="container product-list-container">
+        <div className="row justify-content-center">
+          {productList}
+        </div>
+      </div >
     );
   }
 
   render() {
     const renderedProducts = this.createProducts();
     return (
-      <div className="card-deck justify-content-between mt-4">
+      <div className="card-deck justify-content-between mt-5">
         {renderedProducts}
       </div>
     );
