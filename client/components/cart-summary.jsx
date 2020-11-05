@@ -10,7 +10,7 @@ function CartSummary(props) {
   return (
     <>
       <div className="container cart-summary-container">
-        <div className="row cart-heading">
+        <div className="row">
           <button
             className="btn btn-light back-button mt-3 mb-3"
             onClick={handleClick}>
@@ -34,5 +34,3 @@ function CartSummary(props) {
 }
 
 export default CartSummary;
-
-// figure out how to do item total
