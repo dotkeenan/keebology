@@ -158,6 +158,37 @@ app.post('/api/cart', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/orders', (req, res, next) => {
+  if (!req.session.cartId) {
+    throw new ClientError('No session with that "cartId" exists', 400);
+  }
+
+  if (!req.body.name ||
+   !req.body.creditCard ||
+   !req.body.shippingAddress) {
+    throw new ClientError('"name", "creditCard", and "shippingAddress" must all be filled out', 400);
+  } else if (!Number(req.body.creditCard) || req.body.creditCard.length !== 16) {
+    throw new ClientError('creditCard must be a 16 digit number with no spaces', 400);
+  }
+
+  const insert = `
+    insert into "orders" ("name", "creditCard", "shippingAddress", "cartId")
+         values ($1, $2, $3, $4)
+    returning "orderId",
+              "createdAt",
+              "name",
+              "creditCard",
+              "shippingAddress";
+  `;
+  const params = [req.body.name, req.body.creditCard, req.body.shippingAddress, req.session.cartId];
+  db.query(insert, params)
+    .then(order => {
+      delete req.session.cartId;
+      res.status(201).json(order.rows[0]);
+    })
+    .catch(err => console.error(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
