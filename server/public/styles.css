@@ -79,7 +79,7 @@ header{
 
 .cart-total {
   width: 100%;
-  transform: translatex(-17px)
+  margin: 0px;
 }
 
 .cart-summary-container {
@@ -87,6 +87,25 @@ header{
   padding: 0px;
 }
 
+.cart-footer  {
+  padding: 0px;
+  margin: 0px;
+}
+
 .cart-h2 {
   padding: 0px;
+}
+
+.checkout-btn {
+  width: 100px;
+  height: 50px;
+}
+
+.item-total {
+  margin: 0px;
+  padding: 0px;
+}
+
+.checkout-container {
+  width: 50%;
 }

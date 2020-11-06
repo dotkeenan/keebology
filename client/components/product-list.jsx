@@ -57,5 +57,3 @@ class ProductList extends React.Component {
 }
 
 export default ProductList;
-
-//     console.log('this.props.view', this.props.view);
