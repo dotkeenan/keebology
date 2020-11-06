@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -46,6 +48,20 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  placeOrder(object) {
+    const reqOptions = {
+      method: 'POST',
+      body: JSON.stringify(object),
+      headers: { 'Content-Type': 'application/json' }
+    };
+    fetch('/api/orders', reqOptions)
+      .then(() => this.setState({
+        cart: [],
+        view: { name: 'catalog', params: {} }
+      }))
+      .catch(err => console.error(err));
+  }
+
   setView(name, params) {
     this.setState({
       view: { name: name, params: params }
@@ -60,6 +76,8 @@ export default class App extends React.Component {
       view = <ProductDetails params={this.state.view.params} addToCart={this.addToCart} setView={this.setView}/>;
     } else if (this.state.view.name === 'cart') {
       view = <CartSummary cart={this.state.cart} setView={this.setView}/>;
+    } else if (this.state.view.name === 'checkout') {
+      view = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder}/>;
     }
     return (
       <>
