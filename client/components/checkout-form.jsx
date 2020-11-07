@@ -18,7 +18,7 @@ class CheckoutForm extends React.Component {
     this.props.setView('catalog', {});
   }
 
-  handleChange() {
+  handleChange(event) {
     const inputName = event.target.name;
     const value = event.target.value;
     const newState = {};
@@ -26,7 +26,7 @@ class CheckoutForm extends React.Component {
     this.setState(newState);
   }
 
-  handlePlaceOrder() {
+  handlePlaceOrder(event) {
     event.preventDefault();
     this.props.placeOrder(this.state);
     this.setState({ name: '', creditCard: '', shippingAddress: '' });
