@@ -26,6 +26,35 @@ function CartSummary(props) {
 
   return (
     <div className="container cart-summary-container">
+      <div className="container">
+        <button
+          className="btn btn-light back-button mt-3 mb-3"
+          onClick={handleClick}>
+          &lt; Back to catalog
+        </button>
+        <h2 className="col-12 cart-h2">My Cart</h2>
+      </div>
+      <div className="row">
+        {
+          props.cart.length
+            ? props.cart.map((item, index) => <CartSummaryItem key={index} item={item}/>)
+            : <h3>No items in cart</h3>
+        }
+      </div>
+      <div className="container">
+        <div className="row cart-total justify-content-between align-items-center">
+          <h3 className="item-total">Item Total: {CalculateTotal(props.cart)}</h3>
+          {CheckoutBtn()}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CartSummary;
+
+/*
+<div className="container cart-summary-container">
       <div className="row">
         <button
           className="btn btn-light back-button mt-3 mb-3"
@@ -48,7 +77,4 @@ function CartSummary(props) {
         </div>
       </div>
     </div>
-  );
-}
-
-export default CartSummary;
+*/

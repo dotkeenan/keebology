@@ -26,7 +26,8 @@ app.get('/api/products', (req, res, next) => {
            "price",
            "image",
            "shortDescription"
-      from "products";
+      from "products"
+  order by "productId" asc
   `;
 
   db.query(sql)
@@ -188,6 +189,18 @@ app.post('/api/orders', (req, res, next) => {
     })
     .catch(err => console.error(err));
 });
+
+// app.delete('/api/cart/:cartItemId', (req, res, next) => {
+//   if (!req.params.cartItemId) {
+
+//   }
+//   const sql = `
+//     delete from "cartItems"
+//            where "cartId" = $1
+//        returning *;
+//   `;
+//   db.query(sql, [req.session.cartId]);
+// });
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));

@@ -3,8 +3,8 @@ import PriceFormatter from './price-formatter';
 
 function CartSummaryItem(props) {
   return (
-    <div className="container cart-listing">
-      <div className="row justify-content-center">
+    <div className="container">
+      <div className="justify-content-center">
         <div className="card mb-3 product-item" style={{ maxWidth: 1250 + 'px' }}>
           <div className="row no-gutters justify-content-between">
             <div className="col-sm-3">

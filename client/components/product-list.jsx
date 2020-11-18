@@ -49,7 +49,7 @@ class ProductList extends React.Component {
   render() {
     const renderedProducts = this.createProducts();
     return (
-      <div className="card-deck justify-content-between mt-5">
+      <div className="card-deck justify-content-between mt-2">
         {renderedProducts}
       </div>
     );
