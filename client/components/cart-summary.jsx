@@ -25,7 +25,7 @@ function CartSummary(props) {
   }
 
   return (
-    <div className="container cart-summary-container">
+    <div className="container cart-summary-container pb-3">
       <div className="container">
         <button
           className="btn btn-light back-button mt-3 mb-3"
@@ -34,10 +34,10 @@ function CartSummary(props) {
         </button>
         <h2 className="col-12 cart-h2">My Cart</h2>
       </div>
-      <div className="row">
+      <div className="container">
         {
           props.cart.length
-            ? props.cart.map((item, index) => <CartSummaryItem key={index} item={item}/>)
+            ? props.cart.map((item, index) => <CartSummaryItem key={index} item={item} deleteFromCart={props.deleteFromCart}/>)
             : <h3>No items in cart</h3>
         }
       </div>

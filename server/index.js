@@ -210,7 +210,7 @@ app.delete('/api/cart/:cartItemId', (req, res, next) => {
       if (!result.rows[0]) {
         return next(new ClientError(`cartItemId of ${cartItemId} does not exist`, 400));
       }
-      res.sendStatus(204);
+      res.sendStatus(204).json(result.rows[0]);
     })
     .catch(err => console.error(err));
 });
