@@ -50,7 +50,20 @@ class ProductList extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return <h1 style={{ color: 'red' }}>Loading Products!</h1>;
+      return (
+        <div className="container bg-light text-warning border rounded text-center">
+          <h1>Loading Products!</h1>
+          <div>
+            <img src="/svgs/loading.svg" alt="loading" />
+          </div>
+        </div>
+      );
+    } else if (!this.state.products.length) {
+      return (
+        <div className="container bg-light text-dark border rounded text-center">
+          <h1>There are no products in the database!</h1>;
+        </div>
+      );
     }
 
     const renderedProducts = this.createProducts();
