@@ -296,6 +296,19 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 74	46	2	2595
 75	47	2	2595
 76	47	2	2595
+77	43	1	2999
+78	48	1	2999
+79	48	2	2595
+80	48	3	2900
+81	48	3	2900
+82	49	3	2900
+83	49	1	2999
+84	49	4	999
+85	49	4	999
+86	49	5	9900
+87	49	6	830
+88	50	7	7500
+89	50	8	9999
 \.
 
 
@@ -346,6 +359,9 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 45	2020-11-05 17:14:39.713728-08
 46	2020-11-05 17:20:08.259684-08
 47	2020-11-05 17:37:57.031413-08
+48	2020-11-06 00:10:41.499203-08
+49	2020-11-07 18:11:09.837608-08
+50	2020-11-17 18:12:41.282689-08
 \.
 
 
@@ -358,6 +374,9 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 2	45	keenan	1234567890123456	123 postgresql st	2020-11-05 17:20:01.41573-08
 3	46	keenan	1234567890123456	123 postgresql st	2020-11-05 17:37:51.926176-08
 4	47	keenan	1234567890123456	123 postgresql st	2020-11-05 17:40:51.032774-08
+6	43	keenan	1234123412341234	123 wicked st\nsuite 200\nirvine, ca 92620	2020-11-06 00:04:00.196057-08
+7	48	keenan	1234123412341234	123 wicked st\nsuite 200\nirvine, ca 92620	2020-11-06 00:11:04.801638-08
+8	49	melissa woo	1234123412341234	123 ragweed st\nSan Diego, ca	2020-11-07 18:12:12.059222-08
 \.
 
 
@@ -366,12 +385,15 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-1	Shake Weight	2999	/images/shake-weight.jpg	Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-2	ShamWow	2595	/images/shamwow.jpg	It's like a chamois, towel, and sponge, all in one! Soaks up to 10x it's weight in any liquid!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-3	Snuggie	2900	/images/snuggie.jpg	Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-4	Wax Vac	999	/images/wax-vac.jpg	Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-5	Ostrich Pillow	9900	/images/ostrich-pillow.jpg	Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-6	Tater Mitts	830	/images/tater-mitts.jpg	8 Seconds is all you need with Tater Mitts. Quickly and easily prepare all your favorite potato dishes with Tater Mitts.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
+12	Obinslab Anne Pro 2	9400	/images/ObinslabAnnePro2.jpg	White RGB LED 60% Double Shot PBT Mechanical Keyboard	White RGB LED 60% Double Shot PBT Mechanical Keyboard.  Can be used wired over USB-C or wirelessly over Bluetooth 4.0.  Large 1900 mah battery with Built-in on/off switch to conserve battery power.  ObinsLab Starter companion computer software for programming keyboard layout, function keys, lighting effects, battery life monitoring, macros, and updating firmware.  Bluetooth functionality is compatible with Windows, Mac, Linux, iOS, and Android.
+14	Varmilo VA87M Koi	16600	/images/VarmiloVA87MKoi.jpg	Varmilo VA87M Koi TKL Dye Sub PBT Mechanical Keyboard	The Koi keyboard is a collaboration between Varmilo & Hua Culture Girls.  The Koi fish symbolize good luck, abundance and perseverance. Save space with the TKL form factor!  Genuine Cherry MX Red Switches - suited for gamers with a linear path and lightweight keys for rapid actuation.  Premium PBT keycaps using Dye Sublimation.  Follows the standard QWERTY ANSI layout.  Features full USB N-Key Rollover.  USB-C interface with 60 inch theme matching cable.
+7	Ajazz K620T	7500	/images/AjazzK620T.jpg	62 Keys RGB Bluetooth Wireless/Wired Mechanical Keyboard	Inspired by the community, we designed the K620T keyboard to maximize portability and functionality. It is engineered with more than 19 types of RGB backlight options, as well as a static white backlight. It is a keyboard that is always in sync with your mood to keep you happy and productive. Easily cycle through the different backlight schemes using the lights effect key.
+8	AKKO 3068 9009	9999	/images/AKKO3068.jpg	Tenkeyless Mechanical Keyboard with Cherry MX Switch, N-Key Rollover, 85% PBT Keycaps, Type C Port for Gamers	AKKO is keen to its unique aesthetics and perfection, thus after several versions of 3068 keyboard, here we are bringing you the AKKO 3068-9009 retro-style mechanical keyboard, inspired by famous Cherry G80-9009. With the genuine vintage color, slightly red and blue, the overall look is quite classic and elegant, and unforgettable color scheme for keyboard.
+9	Ducky x Varmilo MIYA Pro Sakura	11900	/images/DuckyxVarmiloMIYAProSakura.jpg	Ducky x Varmilo MIYA Pro Sakura Pink LED 65% Dye Sub PBT Mechanical Keyboard	Ducky and Varmilo are considered by many to be the best of the best when it comes to quality mechanical keyboards. These two titans have collaborated to produce a premium feeling 65% keyboar.  Extremely well-built with Cherry MX switches and PBT keycaps. Fantastic collaboration between Ducky and Varmilo. 65% board, perfect for saving space. Standard sized keys can be easily swapped out unlike some small boards. 
+10	Ducky x MK Creator Mecha Mini	12900	/images/DuckyxMKCreatorMechaMiniRGB.jpg	60% keyboard made with Dark Purple Cast Aluminum frame, exclusive Seamless PBT Pudding Keycaps, and RGB lighting modes	RGB 60% Double Shot Pudding PBT Mechanical Keyboard.  Dark Purple Cast Aluminum frame with MK x Ducky custom graphics + Round 1.  Exclusive Creator Purple + White Seamless PBT Pudding keycaps.  Exclusive bonus Creator spacebar (recommended for low light environments when using LEDs)\n
+11	KBParadise V80	11900	/images/KBParadiseV80.jpg	KBParadise V80 Miami TKL Double Shot ABS Mechanical Keyboard	Go back to basics with the KBParadise V80 Keyboard. Fitted with your choice of keycaps and keycaps, as well as the option for LEDs, this tenkeyless board features an 80% layout with all the function you need and none of the clutter. Think of the V80 as a minimalist mechanical keyboard with maximum utility.
+13	Varmilo VA87M Beijing	14600	/images/VarmiloVA87MBeijingOpera.jpg	Varmilo VA87M Beijing Opera TKL Dye Sub PBT Mechanical Keyboard	This keyboard features the design Beijing Opera inspired by Peking Opera, a traditional and cultural form of art which combines music, vocal performance, mime, dance and acrobatics. Save space with the TKL form factor!  Genuine Cherry MX Red Switches - suited for gamers with a linear path and lightweight keys for rapid actuation.  Premium PBT keycaps using Dye Sublimation.  Follows the standard QWERTY ANSI layout.  Features full USB N-Key Rollover.  USB-C interface with 60 inch theme matching cable.
+15	Vortex POK3R	11900	/images/VortexPOK3R.png	Vortex POK3R White Case 60% Double Shot PBT Mechanical Keyboard	Tiny sized ultra compact mechanical keyboard with 61 keys, without F Raw (functions buttons), without numpad.  Ideal for gamers and typist, office and home use.  The extra small form factor makes the Vortex Poker ideal for reduced spaces.  Includes 3 customizable layouts, thick PBT laser etched keycaps, and a robust metal frame.
 \.
 
 
@@ -379,28 +401,28 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 76, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 89, true);
 
 
 --
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 47, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 50, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 4, true);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 8, true);
 
 
 --
 -- Name: products_productId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."products_productId_seq"', 1, false);
+SELECT pg_catalog.setval('public."products_productId_seq"', 15, true);
 
 
 --

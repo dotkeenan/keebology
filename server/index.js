@@ -53,7 +53,7 @@ app.get('/api/products/:productId', (req, res, next) => {
     .then(result => {
       const productQuery = result.rows[0];
       if (!productQuery) {
-        return next(new ClientError('That "productId" does not exist'));
+        return next(new ClientError('That "productId" does not exist', 404));
       }
       res.status(200).json(productQuery);
     })
@@ -190,17 +190,30 @@ app.post('/api/orders', (req, res, next) => {
     .catch(err => console.error(err));
 });
 
-// app.delete('/api/cart/:cartItemId', (req, res, next) => {
-//   if (!req.params.cartItemId) {
+app.delete('/api/cart/:cartItemId', (req, res, next) => {
+  const cartItemId = parseInt(req.params.cartItemId, 10);
 
-//   }
-//   const sql = `
-//     delete from "cartItems"
-//            where "cartId" = $1
-//        returning *;
-//   `;
-//   db.query(sql, [req.session.cartId]);
-// });
+  if (!req.session.cartId) {
+    return next(new ClientError('That cartId does not exist in current session', 400));
+  } else if (cartItemId <= 0 || !Number.isInteger(cartItemId)) {
+    return next(new ClientError('cartItemId must be a positive integer', 400));
+  }
+
+  const sql = `
+    delete from "cartItems"
+           where "cartItemId" = $1
+             and "cartId" = $2
+       returning *;
+  `;
+  db.query(sql, [cartItemId, req.session.cartId])
+    .then(result => {
+      if (!result.rows[0]) {
+        return next(new ClientError(`cartItemId of ${cartItemId} does not exist`, 400));
+      }
+      res.sendStatus(204);
+    })
+    .catch(err => console.error(err));
+});
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
