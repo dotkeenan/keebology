@@ -5,7 +5,8 @@ class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      isLoading: true
     };
     this.getProducts = this.getProducts.bind(this);
     this.createProducts = this.createProducts.bind(this);
@@ -20,7 +21,8 @@ class ProductList extends React.Component {
       .then(response => response.json())
       .then(products => {
         this.setState({
-          products: products
+          products: products,
+          isLoading: false
         });
       })
       .catch(err => console.error(err));
@@ -47,6 +49,10 @@ class ProductList extends React.Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return <h1 style={{ color: 'red' }}>Loading Products!</h1>;
+    }
+
     const renderedProducts = this.createProducts();
     return (
       <div className="card-deck justify-content-between mt-2">

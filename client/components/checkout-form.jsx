@@ -39,8 +39,11 @@ class CheckoutForm extends React.Component {
         <div className="container checkout-container pb-3 pt-3 col-12 col-sm-11 col-md-9 col-lg-8">
           <div className="row">
             <h2 className="col-12 font-weight-bold">My Cart</h2>
-            <h4 className="col-12 text-muted">
-            Order Total: {CalculateTotal(this.props.cart)}</h4>
+            <div className="col-12 row m-0 p-0 justify-content-between">
+              <h4 className="col-6 text-muted pr-0">
+                Order Total: {CalculateTotal(this.props.cart)}</h4>
+              <h6 className="col-6 text-warning text-right pl-0">Please do not enter any sensitive/real information</h6>
+            </div>
           </div>
           <div>
             <form>

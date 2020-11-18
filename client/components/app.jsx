@@ -4,13 +4,14 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import DisclaimerModal from './disclaimer-modal';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: {
-        name: 'checkout',
+        name: 'modal',
         params: {}
       },
       cart: []
@@ -93,6 +94,8 @@ export default class App extends React.Component {
       view = <CartSummary cart={this.state.cart} setView={this.setView} deleteFromCart={this.deleteFromCart}/>;
     } else if (this.state.view.name === 'checkout') {
       view = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder}/>;
+    } else if (this.state.view.name === 'modal') {
+      view = <DisclaimerModal setView={this.setView}/>;
     }
     return (
       <>
