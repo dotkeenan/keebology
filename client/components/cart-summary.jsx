@@ -15,11 +15,13 @@ function CartSummary(props) {
   function CheckoutBtn() {
     if (props.cart.length) {
       return (
-        <button
-          className="checkout-btn btn btn-primary"
-          onClick={handleCheckout}>
+        <div className="text-right col-6 checkout-btn-container p-0">
+          <button
+            className="checkout-btn btn btn-primary"
+            onClick={handleCheckout}>
             Checkout
-        </button>
+          </button>
+        </div>
       );
     }
   }
@@ -32,7 +34,7 @@ function CartSummary(props) {
           onClick={handleClick}>
           &lt; Back to catalog
         </button>
-        <h2 className="col-12 cart-h2">My Cart</h2>
+        <h2 className="cart-h2">My Cart</h2>
       </div>
       <div className="container">
         {
@@ -42,8 +44,8 @@ function CartSummary(props) {
         }
       </div>
       <div className="container">
-        <div className="row cart-total justify-content-between align-items-center">
-          <h3 className="item-total">Item Total: {CalculateTotal(props.cart)}</h3>
+        <div className="row cart-total justify-content-between align-items-center checkout-footer">
+          <h3 className="col-6 p-0 m-0">Item Total: {CalculateTotal(props.cart)}</h3>
           {CheckoutBtn()}
         </div>
       </div>
