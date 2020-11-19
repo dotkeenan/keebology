@@ -39,13 +39,7 @@ class ProductList extends React.Component {
         />
       );
     });
-    return (
-      <div className="container product-list-container">
-        <div className="row justify-content-center">
-          {productList}
-        </div>
-      </div >
-    );
+    return productList;
   }
 
   render() {
@@ -68,8 +62,10 @@ class ProductList extends React.Component {
 
     const renderedProducts = this.createProducts();
     return (
-      <div className="card-deck justify-content-between mt-2">
-        {renderedProducts}
+      <div className="container">
+        <div className="card-deck mt-2">
+          {renderedProducts}
+        </div>
       </div>
     );
   }
