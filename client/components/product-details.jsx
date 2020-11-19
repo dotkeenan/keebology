@@ -33,7 +33,16 @@ class ProductDetails extends React.Component {
   }
 
   render() {
-    if (this.state.isLoading) return <h1>Loading Item</h1>;
+    if (this.state.isLoading) {
+      return (
+        <div className="container bg-light text-warning border rounded text-center">
+          <h1>Loading Product</h1>
+          <div>
+            <img src="/svgs/loading.svg" alt="loading" />
+          </div>
+        </div>
+      );
+    }
 
     const image = this.state.product.image;
     const name = this.state.product.name;
