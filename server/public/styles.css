@@ -8,28 +8,46 @@ header{
   margin: 0px;
 }
 
+body {
+  background-image: url('/images/keyboards-wallpaper.jpg');
+}
+
 .header-h1 {
   font-size: 1.5rem;
+  margin-left: 5px;
+}
+
+.keeb {
+  color: red;
+}
+
+.logo-heading {
+  margin-left: 5%;
+}
+
+.header-cart {
+  margin-right: 5%;
 }
 
 .header-contents  {
   height: 3rem;
-  width: 48%;
+  width: 100%;
+}
+
+.keyboard-icon  {
+  width: 1.5rem;
 }
 
 .img-fit {
   object-fit: contain;
 }
 
-.product-list-container {
-  width: 50%;
-  margin-left: auto;
-}
-
 .product-item {
   border: 1px solid lightgray;
-  min-width: 28%;
+  background-color: rgba(255, 255, 255, 0.95);
+  min-width: 30%;
   box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
+  border-radius: 10px;
 }
 
 .product-price, .product-desc {
@@ -37,15 +55,14 @@ header{
 }
 
 .card-img-top {
-  height: 100%;
-  max-height: 10rem;
+  height: 10rem;
   align-self: center;
 }
 
 .back-button  {
   width: 135px;
   padding: 0;
-  border-radius: 50px;
+  border-radius: 10px;
   text-decoration: none;
   border: none;
   background-color: none;
@@ -70,7 +87,7 @@ header{
 }
 
 .img-hover:hover  {
-  transform: scale(0.9)
+  transform: scale(0.97)
 }
 
 .fa-shopping-cart {
@@ -83,13 +100,11 @@ header{
 }
 
 .cart-summary-container {
-  width: 50%;
-  padding: 0px;
-}
-
-.cart-footer  {
-  padding: 0px;
-  margin: 0px;
+  width: 100%;
+  padding: 0px 0px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
 }
 
 .cart-h2 {
@@ -98,14 +113,59 @@ header{
 
 .checkout-btn {
   width: 100px;
-  height: 50px;
-}
-
-.item-total {
-  margin: 0px;
-  padding: 0px;
+  height: 40px;
+  margin-bottom: 10px;
 }
 
 .checkout-container {
-  width: 50%;
+  /* width: 60%; */
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
 }
+
+.modal-container {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-elements {
+  width: 33%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
+  top: 50%;
+  left: 50%;
+}
+
+/*
+@media screen and (min-width: 0px){
+  .checkout-container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 575.98px) {
+  .checkout-container  {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 767.98px) {
+  .checkout-container  {
+    width: 80%;
+  }
+}
+
+
+@media screen and (min-width: 991.98px) {
+  .checkout-container  {
+    width: 70%;
+  }
+} */

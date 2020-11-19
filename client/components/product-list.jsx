@@ -5,7 +5,8 @@ class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      isLoading: true
     };
     this.getProducts = this.getProducts.bind(this);
     this.createProducts = this.createProducts.bind(this);
@@ -20,7 +21,8 @@ class ProductList extends React.Component {
       .then(response => response.json())
       .then(products => {
         this.setState({
-          products: products
+          products: products,
+          isLoading: false
         });
       })
       .catch(err => console.error(err));
@@ -37,20 +39,33 @@ class ProductList extends React.Component {
         />
       );
     });
-    return (
-      <div className="container product-list-container">
-        <div className="row justify-content-center">
-          {productList}
-        </div>
-      </div >
-    );
+    return productList;
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (
+        <div className="container bg-light text-warning border rounded text-center">
+          <h1>Loading Products!</h1>
+          <div>
+            <img src="/svgs/loading.svg" alt="loading" />
+          </div>
+        </div>
+      );
+    } else if (!this.state.products.length) {
+      return (
+        <div className="container bg-light text-dark border rounded text-center">
+          <h1>There are no products in the database!</h1>;
+        </div>
+      );
+    }
+
     const renderedProducts = this.createProducts();
     return (
-      <div className="card-deck justify-content-between mt-5">
-        {renderedProducts}
+      <div className="container">
+        <div className="card-deck mt-2">
+          {renderedProducts}
+        </div>
       </div>
     );
   }

@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import DisclaimerModal from './disclaimer-modal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class App extends React.Component {
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +46,20 @@ export default class App extends React.Component {
         const updatedCart = this.state.cart.slice();
         updatedCart.push(product);
         this.setState({ cart: updatedCart });
+      })
+      .catch(err => console.error(err));
+  }
+
+  deleteFromCart(removedCartItemId) {
+    fetch(`/api/cart/${removedCartItemId}`, { method: 'DELETE' })
+      .then(() => {
+        const newCart = this.state.cart.filter(cartItem => cartItem.cartItemId !== removedCartItemId);
+        this.setState({
+          cart: newCart
+        });
+        // this works but seems very resource heavy. makes a new fetch
+        // call each time.
+        // this.getCartItems();
       })
       .catch(err => console.error(err));
   }
@@ -75,9 +91,11 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       view = <ProductDetails params={this.state.view.params} addToCart={this.addToCart} setView={this.setView}/>;
     } else if (this.state.view.name === 'cart') {
-      view = <CartSummary cart={this.state.cart} setView={this.setView}/>;
+      view = <CartSummary cart={this.state.cart} setView={this.setView} deleteFromCart={this.deleteFromCart}/>;
     } else if (this.state.view.name === 'checkout') {
       view = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder}/>;
+    } else if (this.state.view.name === 'modal') {
+      view = <DisclaimerModal setView={this.setView}/>;
     }
     return (
       <>
