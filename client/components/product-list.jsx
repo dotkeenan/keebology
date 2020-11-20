@@ -55,7 +55,7 @@ class ProductList extends React.Component {
     } else if (!this.state.products.length) {
       return (
         <div className="container bg-light text-dark border rounded text-center">
-          <h1>There are no products in the database!</h1>;
+          <h1>There are no products in the database!</h1>
         </div>
       );
     }
