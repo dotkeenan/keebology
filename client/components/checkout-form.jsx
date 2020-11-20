@@ -46,7 +46,7 @@ class CheckoutForm extends React.Component {
             </div>
           </div>
           <div>
-            <form>
+            <form onSubmit={this.handlePlaceOrder}>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -55,7 +55,8 @@ class CheckoutForm extends React.Component {
                   className="form-control"
                   placeholder="John Doe"
                   value={this.state.name}
-                  onChange={this.handleChange}/>
+                  onChange={this.handleChange}
+                  required/>
               </div>
               <div className="form-group">
                 <label htmlFor="creditCard">Credit Card</label>
@@ -65,7 +66,8 @@ class CheckoutForm extends React.Component {
                   className="form-control"
                   placeholder="1111222333444"
                   value={this.state.creditCard}
-                  onChange={this.handleChange}/>
+                  onChange={this.handleChange}
+                  required />
               </div>
               <div className="form-group">
                 <label htmlFor="shippingAddress">Shipping Address</label>
@@ -75,7 +77,8 @@ class CheckoutForm extends React.Component {
                   rows="3"
                   placeholder="123 Wicked Street, &#10;Apt#23 &#10;Irvine, CA 92620"
                   value={this.state.shippingAddress}
-                  onChange={this.handleChange}>
+                  onChange={this.handleChange}
+                  required>
                 </textarea>
               </div>
               <div className="container">
@@ -86,7 +89,8 @@ class CheckoutForm extends React.Component {
                   &lt; Keep Shopping
                   </button>
                   <button
-                    className="btn btn-primary" onClick={this.handlePlaceOrder}>
+                    className="btn btn-primary">
+                    {/* className="btn btn-primary" onClick={this.handlePlaceOrder}> */}
                     Place Order
                   </button>
                 </div>
