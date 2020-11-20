@@ -109,6 +109,7 @@ body {
 
 .cart-h2 {
   padding: 0px;
+  border-bottom: 1px dashed lightgray;
 }
 
 .checkout-btn {
