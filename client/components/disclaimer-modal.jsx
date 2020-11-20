@@ -8,7 +8,7 @@ function DisclaimerModal(props) {
     <div className="modal-container">
       <div className=" container modal-elements">
         <div className="row justify-content-center text-center p-3">
-          <h1>Disclaimer!</h1>
+          <h1 className="h1-disclaimer">Disclaimer!</h1>
           <p>{`This is a demo site and does not sell real products.  If you
           understand that, please feel free to use the site and look around!
           Again, you will not receive any products you attempt to buy, and I

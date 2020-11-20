@@ -30,6 +30,7 @@ Try the application live at [https://keebology.keenanng.com/](https://keebology.
 - User can view the details of a product
 - User can add a product to their shopping cart
 - User can view their cart summary
+- User can remove an item from their cart
 - User can place an order
 
 ## Development
