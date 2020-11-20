@@ -68,9 +68,10 @@ export default class App extends React.Component {
       headers: { 'Content-Type': 'application/json' }
     };
     fetch('/api/orders', reqOptions)
-      .then(() => this.setState({
-        cart: [],
-        view: { name: 'catalog', params: {} }
+      .then(res => res.json())
+      .then(data => this.setState({
+        view: { name: 'catalog', params: {} },
+        cart: []
       }))
       .catch(err => console.error(err));
   }

@@ -5,7 +5,7 @@ function DisclaimerModal(props) {
     props.setView('catalog', {});
   }
   return (
-    <div className="modal-container">
+    <div className="modal-container modal-backdrop">
       <div className=" container modal-elements">
         <div className="row justify-content-center text-center p-3">
           <h1 className="h1-disclaimer">Disclaimer!</h1>

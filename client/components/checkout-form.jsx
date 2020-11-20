@@ -9,14 +9,14 @@ class CheckoutForm extends React.Component {
       creditCard: '',
       shippingAddress: ''
     };
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handlePlaceOrder = this.handlePlaceOrder.bind(this);
   }
 
-  handleClick() {
-    this.props.setView('catalog', {});
-  }
+  // handleClick() {
+  //   this.props.setView('catalog', {});
+  // }
 
   handleChange(event) {
     const inputName = event.target.name;
@@ -26,11 +26,20 @@ class CheckoutForm extends React.Component {
     this.setState(newState);
   }
 
+  alertFunc() {
+    alert('Credit card number must be a 16 digit number with no spaces');
+    return false;
+  }
+
   handlePlaceOrder(event) {
     event.preventDefault();
-    this.props.placeOrder(this.state);
-    this.setState({ name: '', creditCard: '', shippingAddress: '' });
-    this.handleClick();
+    const creditCard = parseInt(this.state.creditCard, 10);
+    if (!creditCard || !Number.isInteger(creditCard) || this.state.creditCard.length !== 16) {
+      alert('Credit card number must be a 16 digit number with no spaces');
+      return false;
+    } else {
+      this.props.placeOrder(this.state);
+    }
   }
 
   render() {
@@ -42,7 +51,7 @@ class CheckoutForm extends React.Component {
             <div className="col-12 row m-0 p-0 justify-content-between">
               <h4 className="col-6 text-muted pr-0">
                 Order Total: {CalculateTotal(this.props.cart)}</h4>
-              <h6 className="col-6 text-warning text-right pl-0">Please do not enter any sensitive/real information</h6>
+              <h6 className="col-6 text-danger text-right pl-0">Please do not enter any sensitive/real information</h6>
             </div>
           </div>
           <div>
@@ -88,11 +97,10 @@ class CheckoutForm extends React.Component {
                     onClick={this.handleClick}>
                   &lt; Keep Shopping
                   </button>
-                  <button
-                    className="btn btn-primary">
-                    {/* className="btn btn-primary" onClick={this.handlePlaceOrder}> */}
-                    Place Order
-                  </button>
+                  <input
+                    type="submit"
+                    className="btn btn-primary"
+                    value="Place Order"/>
                 </div>
               </div>
             </form>
