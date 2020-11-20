@@ -184,7 +184,7 @@ app.post('/api/orders', (req, res, next) => {
   const params = [req.body.name, req.body.creditCard, req.body.shippingAddress, req.session.cartId];
   db.query(insert, params)
     .then(order => {
-      delete req.session.cartId;
+      req.session.destroy();
       res.status(201).json(order.rows[0]);
     })
     .catch(err => console.error(err));

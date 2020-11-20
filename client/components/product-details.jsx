@@ -53,15 +53,15 @@ class ProductDetails extends React.Component {
     return (
       <div className="container">
         <div className="row justify-content-center">
-          <div className="card mb-3 product-item" style={{ maxWidth: 800 + 'px' }}>
+          <div className="card mb-3 product-item pl-3 pr-3" style={{ maxWidth: 800 + 'px' }}>
             <button
-              className="btn btn-light back-button ml-4 mt-3 mb-3"
+              className="btn btn-light back-button mt-3 mb-3"
               onClick={this.handleClick}>
             &lt; Back to catalog
             </button>
             <div className="row no-gutters justify-content-between">
               <div className="col-sm-6">
-                <img src={image} className="card-img img-fit ml-4" alt={name} />
+                <img src={image} className="card-img img-fit" alt={name} />
               </div>
               <div className="col-sm-5">
                 <div className="card-body">

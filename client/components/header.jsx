@@ -8,7 +8,7 @@ function Header(props) {
     props.setView('catalog', {});
   }
   return (
-    <header className="container-fluid text-light bg-dark justify-content-center mb-4">
+    <header className="container-fluid text-light bg-dark justify-content-center mb-4 sticky-top">
       <div className="row header-contents align-items-center justify-content-between">
         <div className="row logo-heading align-items-middle hover" onClick={handleTitleClick}>
           <img className="keyboard-icon" src="/svgs/keyboard.svg" alt="keyboard" />

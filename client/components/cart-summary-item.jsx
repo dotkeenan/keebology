@@ -9,7 +9,7 @@ function CartSummaryItem(props) {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="mb-3 product-item pb-4" style={{ maxWidth: 1250 + 'px' }}>
+        <div className="mb-3 product-item" style={{ maxWidth: 1250 + 'px' }}>
           <div className="row no-gutters justify-content-between align-items-center">
             <div className="col-md-4">
               <img src={props.item.image} className="card-img-top img-fit" alt={props.item.name} />

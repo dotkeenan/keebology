@@ -135,7 +135,7 @@ body {
 }
 
 .modal-elements {
-  width: 33%;
+  max-width: 500px;
   position: absolute;
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.95);
@@ -144,6 +144,14 @@ body {
   top: 50%;
   left: 50%;
 }
+
+
+@media screen and (max-width: 202px)  {
+  .h1-disclaimer  {
+    font-size: 1.5rem;
+  }
+}
+
 
 /*
 @media screen and (min-width: 0px){
