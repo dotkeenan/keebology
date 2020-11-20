@@ -1,4 +1,4 @@
-# wicked-sales.js
+# Keebology
 A full stack Node.js and React shopping cart app for mechanical keyboard enthusiasts.
 
 ## Technologies Used
