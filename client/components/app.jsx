@@ -57,9 +57,6 @@ export default class App extends React.Component {
         this.setState({
           cart: newCart
         });
-        // this works but seems very resource heavy. makes a new fetch
-        // call each time.
-        // this.getCartItems();
       })
       .catch(err => console.error(err));
   }
