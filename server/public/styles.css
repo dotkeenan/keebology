@@ -9,6 +9,7 @@ header{
 }
 
 body {
+  height: 100vh;
   background-image: url('/images/keyboards-wallpaper.jpg');
 }
 
