@@ -9,8 +9,10 @@ header{
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   background-image: url('/images/keyboards-wallpaper.jpg');
+  padding-bottom: 24px;
 }
 
 .header-h1 {
