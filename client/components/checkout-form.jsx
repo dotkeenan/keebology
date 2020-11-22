@@ -44,7 +44,7 @@ class CheckoutForm extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container mb-4">
         <div className="container checkout-container pb-3 pt-3 col-12 col-sm-11 col-md-9 col-lg-8">
           <div className="row">
             <h2 className="col-12 font-weight-bold">My Cart</h2>
