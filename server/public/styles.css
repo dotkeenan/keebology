@@ -55,6 +55,13 @@ max-width: 100%;
 .carousel-img  {
   height: 500px;
   object-fit: contain;
+  transform: scale(1);
+  transition: transform .1s linear;
+}
+
+.carousel-img:hover {
+  transform: scale(.97);
+
 }
 
 .carousel-control-prev-icon {

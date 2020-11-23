@@ -17,7 +17,7 @@ function MyCarousel(props) {
       <Carousel className="border-radius15">
         <Carousel.Item interval={3000}>
           <img
-            className="d-block w-100 carousel-img"
+            className="d-block w-100 carousel-img hover"
             onClick={firstClick}
             src="/images/VarmiloVA87MKoi.jpg"
             alt="First slide"
@@ -28,7 +28,7 @@ function MyCarousel(props) {
         </Carousel.Item>
         <Carousel.Item interval={3000}>
           <img
-            className="d-block w-100 carousel-img"
+            className="d-block w-100 carousel-img hover"
             onClick={secondClick}
             src="/images/VarmiloVA87MBeijingOpera.jpg"
             alt="Third slide"
@@ -39,7 +39,7 @@ function MyCarousel(props) {
         </Carousel.Item>
         <Carousel.Item interval={3000}>
           <img
-            className="d-block w-100 carousel-img"
+            className="d-block w-100 carousel-img hover"
             onClick={thirdClick}
             src="/images/DuckyxMKCreatorMechaMiniRGB.jpg"
             alt="Third slide"
