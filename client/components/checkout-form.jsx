@@ -26,11 +26,6 @@ class CheckoutForm extends React.Component {
     this.setState(newState);
   }
 
-  alertFunc() {
-    alert('Credit card number must be a 16 digit number with no spaces');
-    return false;
-  }
-
   handlePlaceOrder(event) {
     event.preventDefault();
     const creditCard = parseInt(this.state.creditCard, 10);

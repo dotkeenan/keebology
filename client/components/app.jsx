@@ -5,6 +5,7 @@ import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import DisclaimerModal from './disclaimer-modal';
+import MyCarousel from './my-carousel';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -98,6 +99,7 @@ export default class App extends React.Component {
     return (
       <>
         <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
+        {this.state.view.name === 'catalog' ? <MyCarousel setView={this.setView} /> : null}
         {view}
       < />
     );
