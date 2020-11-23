@@ -53,7 +53,8 @@ max-width: 100%;
 }
 
 .carousel-img  {
-  height: 500px;
+  min-height: 229.94px;
+  max-height: 500px;
   object-fit: contain;
   transform: scale(1);
   transition: transform .1s linear;
@@ -189,7 +190,6 @@ max-width: 100%;
     font-size: 1.5rem;
   }
 }
-
 
 /*
 @media screen and (min-width: 0px){
