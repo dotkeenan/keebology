@@ -27,7 +27,7 @@ function CartSummary(props) {
   }
 
   return (
-    <div className="container cart-summary-container pb-3 mb-4">
+    <div className="container cart-summary-container pb-3">
       <div className="container">
         <button
           className="btn btn-light back-button mt-3 mb-3"
