@@ -63,13 +63,7 @@ max-width: 100%;
   min-height: 229.94px;
   max-height: 500px;
   object-fit: contain;
-  transform: scale(1);
-  transition: transform .1s linear;
-}
-
-.carousel-img:hover {
-  transform: scale(.97);
-
+  border-radius: 15px;
 }
 
 .carousel-control-prev-icon {
