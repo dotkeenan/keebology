@@ -10,6 +10,11 @@ import MyCarousel from './my-carousel';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   view: {
+    //     name: 'details',
+    //     params: { productId: 7 }
+    //   },
     this.state = {
       view: {
         name: 'modal',

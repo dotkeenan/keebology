@@ -101,6 +101,8 @@ class ProductDetails extends React.Component {
         <AddItemModal
           show={this.state.modalVisible}
           onHide={this.modalClose}
+          product={this.state.product}
+          addToCart={this.props.addToCart}
         />
         {/* </ButtonToolbar> */}
       </>
