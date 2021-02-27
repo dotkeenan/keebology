@@ -3,14 +3,17 @@ import { Modal, Button } from 'react-bootstrap';
 
 function AddItemModal(props) {
   function modalAdd() {
-    props.addToCart(props.product);
+    props.addtocart(props.product);
+    props.onHide();
   }
   // console.log(props.product);
   // console.log(props.addToCart);
   return (
     <Modal
-      { ...props }
-      size = "lg"
+      // { ...props }
+      show={props.show}
+      onHide={props.onHide}
+      size = "md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
