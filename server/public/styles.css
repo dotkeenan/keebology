@@ -185,6 +185,10 @@ max-width: 100%;
   left: 50%;
 }
 
+#quantity {
+  min-width: 4rem;
+  width: 25%;
+}
 
 @media screen and (max-width: 202px)  {
   .h1-disclaimer  {

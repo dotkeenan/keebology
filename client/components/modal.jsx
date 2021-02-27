@@ -13,7 +13,7 @@ function AddItemModal(props) {
       // { ...props }
       show={props.show}
       onHide={props.onHide}
-      size = "md"
+      // size = "md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -23,10 +23,15 @@ function AddItemModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Add item to cart?</h4>
-        <p>
-
-        </p>
+        <div className="container">
+          <div className="row flex-row justify-content-between">
+            <h4 className="col-6">How many?</h4>
+            <form className="form-quantity col-6 row justify-content-end">
+              <label className="m-0 align-self-center" htmlFor="quantity">Quantity:</label>
+              <input type="number" id="quantity" name="quantity" min="1" size="1"/>
+            </form>
+          </div>
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={modalAdd}>Add</Button>
