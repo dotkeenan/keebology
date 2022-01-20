@@ -33,26 +33,9 @@ module.exports = {
     historyApiFallback: true,
     host: '0.0.0.0',
     port: process.env.DEV_SERVER_PORT,
-    // suggestion from windowsreport
-    // proxy: {
-    //   '/api': {
-    //     target: `http://localhost:${process.env.PORT}`,
-    //     secure: false,
-    //     changeOrigin: true
-    //   }
-    // },
-
-    // original
     proxy: {
       '/api': `http://localhost:${process.env.PORT}`
     },
-
-    // another try
-    // proxy: {
-    //   '*': 'http://[::1]:3000',
-    //   secure: false,
-    //   changeOrigin: true
-    // },
     stats: 'minimal',
     watchContentBase: true
   }

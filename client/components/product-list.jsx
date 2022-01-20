@@ -45,7 +45,7 @@ class ProductList extends React.Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <div className="container bg-light text-warning border rounded text-center">
+        <div className="container text-warning text-center">
           <h1>Loading Products!</h1>
           <div>
             <img src="/svgs/loading.svg" alt="loading" />
