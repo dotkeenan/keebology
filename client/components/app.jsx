@@ -17,7 +17,7 @@ export default class App extends React.Component {
     //   },
     this.state = {
       view: {
-        name: 'modal',
+        name: 'catalog',
         params: {}
       },
       cart: []
@@ -106,7 +106,7 @@ export default class App extends React.Component {
         <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
         {this.state.view.name === 'catalog' ? <MyCarousel setView={this.setView} /> : null}
         {view}
-      < />
+      </>
     );
   }
 }
