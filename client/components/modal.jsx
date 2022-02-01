@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 function AddItemModal(props) {
+  const [amount, setAmount] = useState(1);
+  const onChange = e => {
+    setAmount(event.target.value);
+  };
+
   function modalAdd() {
     props.addtocart(props.product);
     props.onHide();
@@ -32,6 +37,8 @@ function AddItemModal(props) {
                 type="number"
                 id="quantity"
                 name="quantity"
+                value={amount}
+                onChange={onChange}
                 min="1"
                 size="1"
               />
