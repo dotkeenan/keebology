@@ -40,20 +40,22 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  addToCart(product) {
-    const reqOptions = {
-      method: 'POST',
-      body: JSON.stringify(product),
-      headers: { 'Content-Type': 'application/json' }
-    };
-    fetch('/api/cart', reqOptions)
-      .then(result => result.json())
-      .then(product => {
-        const updatedCart = this.state.cart.slice();
-        updatedCart.push(product);
-        this.setState({ cart: updatedCart });
-      })
-      .catch(err => console.error(err));
+  addToCart(product, amount) {
+    for (let i = 0; i < amount; i++) {
+      const reqOptions = {
+        method: 'POST',
+        body: JSON.stringify(product),
+        headers: { 'Content-Type': 'application/json' }
+      };
+      fetch('/api/cart', reqOptions)
+        .then(result => result.json())
+        .then(product => {
+          const updatedCart = this.state.cart.slice();
+          updatedCart.push(product);
+          this.setState({ cart: updatedCart });
+        })
+        .catch(err => console.error(err));
+    }
   }
 
   deleteFromCart(removedCartItemId) {

@@ -8,7 +8,7 @@ function AddItemModal(props) {
   };
 
   function modalAdd() {
-    props.addtocart(props.product);
+    props.addtocart(props.product, amount);
     props.onHide();
   }
   // console.log(props.product);
