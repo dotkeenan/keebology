@@ -42,12 +42,13 @@ app.get('/api/products/:productId', (req, res, next) => {
     return next(new ClientError('"productId" must be a positive integer', 400));
   }
 
-  const params = [req.params.productId];
   const sql = `
-    select *
-    from "products"
-    where "productId" = $1
+  select *
+  from "products"
+  where "productId" = $1
   `;
+
+  const params = [req.params.productId];
 
   db.query(sql, params)
     .then(result => {
@@ -77,7 +78,8 @@ app.get('/api/cart', (req, res, next) => {
       join "products" as "p" using ("productId")
      where "c"."cartId" = $1
   `;
-  db.query(select, [req.session.cartId])
+  const params = [req.session.cartId];
+  db.query(select, params)
     .then(result => res.json(result.rows))
     .catch(err => next(err));
 });
@@ -94,7 +96,9 @@ app.post('/api/cart', (req, res, next) => {
      where "productId" = $1
   `;
 
-  db.query(sql, [productId])
+  const params = [productId];
+
+  db.query(sql, params)
     .then(result => {
       if (!result.rows[0]) {
         throw new ClientError('product with that productId does not exist', 404);
@@ -147,8 +151,11 @@ app.post('/api/cart', (req, res, next) => {
           join "products" as "p" using ("productId")
          where "c"."cartItemId" = $1
       `;
+
+      const params = [result.cartItemId];
+
       return (
-        db.query(select, [result.cartItemId])
+        db.query(select, params)
           .then(result => {
             return res.status(201).json(result.rows[0]);
           })
@@ -182,6 +189,7 @@ app.post('/api/orders', (req, res, next) => {
               "shippingAddress";
   `;
   const params = [req.body.name, req.body.creditCard, req.body.shippingAddress, req.session.cartId];
+
   db.query(insert, params)
     .then(order => {
       req.session.destroy();
@@ -205,12 +213,15 @@ app.delete('/api/cart/:cartItemId', (req, res, next) => {
              and "cartId" = $2
        returning *;
   `;
-  db.query(sql, [cartItemId, req.session.cartId])
+
+  const params = [cartItemId, req.session.cartId];
+
+  db.query(sql, params)
     .then(result => {
       if (!result.rows[0]) {
         return next(new ClientError(`cartItemId of ${cartItemId} does not exist`, 400));
       }
-      res.sendStatus(204).json(result.rows[0]);
+      res.status(204).json(result.rows[0]);
     })
     .catch(err => console.error(err));
 });

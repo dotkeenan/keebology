@@ -10,9 +10,14 @@ import MyCarousel from './my-carousel';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   view: {
+    //     name: 'details',
+    //     params: { productId: 7 }
+    //   },
     this.state = {
       view: {
-        name: 'modal',
+        name: 'catalog',
         params: {}
       },
       cart: []
@@ -35,20 +40,22 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  addToCart(product) {
-    const reqOptions = {
-      method: 'POST',
-      body: JSON.stringify(product),
-      headers: { 'Content-Type': 'application/json' }
-    };
-    fetch('/api/cart', reqOptions)
-      .then(result => result.json())
-      .then(product => {
-        const updatedCart = this.state.cart.slice();
-        updatedCart.push(product);
-        this.setState({ cart: updatedCart });
-      })
-      .catch(err => console.error(err));
+  addToCart(product, amount) {
+    for (let i = 0; i < amount; i++) {
+      const reqOptions = {
+        method: 'POST',
+        body: JSON.stringify(product),
+        headers: { 'Content-Type': 'application/json' }
+      };
+      fetch('/api/cart', reqOptions)
+        .then(result => result.json())
+        .then(product => {
+          const updatedCart = this.state.cart.slice();
+          updatedCart.push(product);
+          this.setState({ cart: updatedCart });
+        })
+        .catch(err => console.error(err));
+    }
   }
 
   deleteFromCart(removedCartItemId) {
@@ -101,7 +108,7 @@ export default class App extends React.Component {
         <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
         {this.state.view.name === 'catalog' ? <MyCarousel setView={this.setView} /> : null}
         {view}
-      < />
+      </>
     );
   }
 }

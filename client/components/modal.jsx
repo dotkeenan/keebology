@@ -1,29 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 function AddItemModal(props) {
+  const [amount, setAmount] = useState(1);
+  const onChange = e => {
+    setAmount(event.target.value);
+  };
 
+  function modalAdd() {
+    props.addtocart(props.product, amount);
+    props.onHide();
+  }
+  // console.log(props.product);
+  // console.log(props.addToCart);
   return (
     <Modal
-      { ...props }
-      size = "lg"
+      // { ...props }
+      show={props.show}
+      onHide={props.onHide}
+      // size = "md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+        <Modal.Title id="contained-modal-title-vcenter" className="text-center">
+          {props.product.name}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+        <div className="container">
+          <div className="row flex-row justify-content-between">
+            <h4 className="col-6 px-0">Confirm amount</h4>
+            <form className="form-quantity col-6 row justify-content-end">
+              <label className="m-0 align-self-center" htmlFor="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value={amount}
+                onChange={onChange}
+                min="1"
+                size="1"
+              />
+            </form>
+          </div>
+        </div>
       </Modal.Body>
       <Modal.Footer>
+        <Button onClick={modalAdd}>Add</Button>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal >

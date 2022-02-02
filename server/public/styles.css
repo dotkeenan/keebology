@@ -88,6 +88,7 @@ max-width: 100%;
   min-width: 30%;
   box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
   border-radius: 10px;
+  width: 100%;
 }
 
 .product-price, .product-desc {
@@ -185,6 +186,10 @@ max-width: 100%;
   left: 50%;
 }
 
+#quantity {
+  min-width: 4rem;
+  width: 25%;
+}
 
 @media screen and (max-width: 202px)  {
   .h1-disclaimer  {
